@@ -1,0 +1,17 @@
+{
+    "name": "pmvc-plugin/http",
+    "description": "PMVC Http Support",
+    "type": "library",
+    "keywords": ["http", "pmvc", "plug-in"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hill",
+            "email": "hill@kimo.com"
+        }
+    ],
+    "require": {
+        "pmvc/pmvc": "*"
+    },
+    "minimum-stability": "dev"
+}
