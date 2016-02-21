@@ -3,7 +3,9 @@ namespace PMVC\PlugIn\http;
 
 ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\http';
 
-class http extends \PMVC\PlugIn
+class http 
+    extends \PMVC\PlugIn
+    implements \PMVC\RouterInterface
 {
     public function init()
     {
