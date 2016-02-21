@@ -7,19 +7,13 @@ class http extends \PMVC\PlugIn
 {
     public function init()
     {
-        \PMVC\call_plugin(
-            'dispatcher',
-            'attach',
-            array(
-                $this,
-                \PMVC\Event\MAP_REQUEST
-            )
-        );
-    }
-
-    public function onMapRequest()
-    {
         $controller = \PMVC\getC();
+        if (empty($controller)) {
+            return !trigger_error(
+                'Need initial controller first',
+                E_USER_WARNING
+            );
+        }
         $request = $controller->getRequest();
         $method = $this->getMethod();
         $request->setMethod($method);
