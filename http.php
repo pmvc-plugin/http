@@ -2,6 +2,7 @@
 namespace PMVC\PlugIn\http;
 
 ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\http';
+\PMVC\initPlugin(['controller'=>null]);
 
 class http 
     extends \PMVC\PlugIn
@@ -9,7 +10,7 @@ class http
 {
     public function init()
     {
-        $controller = \PMVC\getC();
+        $controller = \PMVC\plug('controller');
         if (empty($controller)) {
             return !trigger_error(
                 'Need initial controller first',
