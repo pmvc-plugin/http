@@ -4,6 +4,8 @@ namespace PMVC\PlugIn\http;
 ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\http';
 \PMVC\initPlugin(['controller'=>null]);
 
+const REQUEST_METHOD = '--REQUEST_METHOD';
+
 class http 
     extends \PMVC\PlugIn
     implements \PMVC\RouterInterface
@@ -37,6 +39,9 @@ class http
             }
         }
         \PMVC\set($request,$inputs);
+        if (isset($request[REQUEST_METHOD])) {
+            $request->setMethod($request[REQUEST_METHOD]);
+        }
     }
 
     public function getMethod()
