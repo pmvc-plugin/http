@@ -40,7 +40,7 @@ class http
         }
         \PMVC\set($request,$inputs);
         if (isset($request[REQUEST_METHOD])) {
-            $request->setMethod($request[REQUEST_METHOD]);
+            $request->setMethod(strtoupper($request[REQUEST_METHOD]));
         }
     }
 
