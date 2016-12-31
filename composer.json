@@ -12,7 +12,8 @@
     ],
     "require": {
         "pmvc-plugin/controller": "*",
-        "pmvc-plugin/url": "*"
+        "pmvc-plugin/url": "*",
+        "pmvc-plugin/getenv": "*"
     },
     "minimum-stability": "dev"
 }

@@ -10,6 +10,7 @@ class http
 {
     public function init()
     {
+        $env = \PMVC\plug('getenv');
         $controller = \PMVC\plug('controller');
         if (empty($controller)) {
             return !trigger_error(
@@ -23,7 +24,7 @@ class http
         if ('GET'===$method) {
             $inputs =& $_GET;
         } else {
-            $isJsonInput = ('application/json'===getenv('CONTENT_TYPE'));
+            $isJsonInput = ('application/json'===$env->get('CONTENT_TYPE'));
             if ($isJsonInput || 'PUT'===$method) {
                 $input = file_get_contents("php://input");
                 if ($isJsonInput) {
@@ -40,8 +41,9 @@ class http
 
     public function getMethod()
     {
-        $method = getenv('REQUEST_METHOD');
-        $cros_method = getenv('HTTP_ACCESS_CONTROL_REQUEST_METHOD');
+        $env = \PMVC\plug('getenv');
+        $method = $env->get('REQUEST_METHOD');
+        $cros_method = $env->get('HTTP_ACCESS_CONTROL_REQUEST_METHOD');
         if ($method === 'OPTIONS' && $cros_method) {
             $method = $cros_method;
         }
