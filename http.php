@@ -35,7 +35,7 @@ class http
                     parse_str($input, $inputs);
                 }
             } else {
-                $inputs =& $_POST;
+                $inputs =& $_REQUEST;
             }
         }
         \PMVC\set($request,$inputs);
