@@ -57,7 +57,7 @@ class http
 
     public function buildCommand($url, $params)
     {
-        $url = \PMVC\plug('url')->getUrl($url);
+        $url = \PMVC\plug('url')->getUrl((string)$url);
         $url->query($params);
 
         return (string)$url;
