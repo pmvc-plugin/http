@@ -30,7 +30,7 @@ class http
             if ($isJsonInput || 'PUT'===$method) {
                 $input = file_get_contents("php://input");
                 if ($isJsonInput) {
-                    $inputs = (array)\PMVC\fromJson($input);
+                    $inputs = \PMVC\fromJson($input, true);
                 } else {
                     parse_str($input, $inputs);
                 }
