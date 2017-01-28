@@ -42,6 +42,7 @@ class http
         if (isset($request[REQUEST_METHOD])) {
             $request->setMethod(strtoupper($request[REQUEST_METHOD]));
         }
+        \PMVC\option('set', 'realUrl', \PMVC\plug('url')->realUrl());
     }
 
     public function getMethod()
@@ -57,10 +58,12 @@ class http
 
     public function buildCommand($url, $params)
     {
-        $url = \PMVC\plug('url')->getUrl((string)$url);
+        $pUrl = \PMVC\plug('url');
+        if (!is_object($url)) {
+            $url = $pUrl->getUrl($url);
+        }
         $url->query($params);
-
-        return (string)$url;
+        return (string)$pUrl->toHttp($url);
     }
 
     /**
