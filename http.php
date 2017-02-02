@@ -71,6 +71,7 @@ class http
      */
     public function processHeader($headers)
     {
+        http_response_code(\PMVC\getOption('httpResponseCode',200));
         foreach ($headers as $h) {
             header($h);
         }
