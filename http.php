@@ -82,6 +82,8 @@ class http
      */
     public function go($path)
     {
-        $this->processHeader(array("Location: $path"));
+        $this->processHeader(["Location: $path"]);
+        echo '<meta http-equiv="refresh" content="0; url='.$path.'">';
+        echo '<script>location.replace('.$path.')</script>';
     }
 }
