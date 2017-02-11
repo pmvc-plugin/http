@@ -83,6 +83,9 @@ class http
     public function go($path)
     {
         $this->processHeader(["Location: $path"]);
+        if (p\getOption(_VIEW_ENGINE)==='json') {
+            return;
+        }
         echo '<meta http-equiv="refresh" content="0; url='.$path.'">';
         echo '<script>location.replace('.$path.')</script>';
     }
