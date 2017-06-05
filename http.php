@@ -42,7 +42,6 @@ class http
         if (isset($request[REQUEST_METHOD])) {
             $request->setMethod(strtoupper($request[REQUEST_METHOD]));
         }
-        \PMVC\option('set', 'realUrl', \PMVC\plug('url')->realUrl());
     }
 
     public function getMethod()
