@@ -62,7 +62,7 @@ class http
             $url = $pUrl->getUrl($url);
         }
         $url->query($params);
-        return (string)$pUrl->toHttp($url);
+        return (string)$pUrl->pathToUrl($url);
     }
 
     /**
