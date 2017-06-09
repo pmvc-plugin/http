@@ -4,7 +4,7 @@
 [![License](https://poser.pugx.org/pmvc-plugin/http/license)](https://packagist.org/packages/pmvc-plugin/http)
 [![Total Downloads](https://poser.pugx.org/pmvc-plugin/http/downloads)](https://packagist.org/packages/pmvc-plugin/http) 
 
-HTTP (Provide minimal http function to [PMVC](http://github.com/pmvc/pmvc) )
+HTTP (Provide minimal http function to [PMVC Controller](http://github.com/pmvc-plugin/controller) )
 ===============
 
 ## Install with Composer
