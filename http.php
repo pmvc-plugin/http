@@ -1,11 +1,12 @@
 <?php
+
 namespace PMVC\PlugIn\http;
 
 ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\http';
-\PMVC\initPlugin(['controller'=>null]);
+\PMVC\initPlugin(['controller'=>null, 'getenv'=>null]);
 
-const REQUEST_METHOD = '--REQUEST_METHOD';
-
+if (!class_exists(${_INIT_CONFIG}[_CLASS])) {
+define(__NAMESPACE__.'\REQUEST_METHOD', '--REQUEST_METHOD');
 class http 
     extends \PMVC\PlugIn
     implements \PMVC\RouterInterface
@@ -82,10 +83,10 @@ class http
     public function go($path)
     {
         $this->processHeader(["Location: $path"]);
-        if (p\getOption(_VIEW_ENGINE)==='json') {
+        if (\PMVC\getOption(_VIEW_ENGINE)==='json') {
             return;
         }
         echo '<meta http-equiv="refresh" content="0; url='.$path.'">';
         echo '<script>location.replace('.$path.')</script>';
     }
-}
+}}
