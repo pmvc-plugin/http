@@ -6,7 +6,6 @@ ${_INIT_CONFIG}[_CLASS] = __NAMESPACE__.'\http';
 \PMVC\initPlugin(['controller'=>null, 'getenv'=>null]);
 
 if (!class_exists(${_INIT_CONFIG}[_CLASS])) {
-define(__NAMESPACE__.'\REQUEST_METHOD', '--REQUEST_METHOD');
 class http 
     extends \PMVC\PlugIn
     implements \PMVC\RouterInterface
@@ -22,6 +21,12 @@ class http
             );
         }
         $request = $controller->getRequest();
+        $uri = \PMVC\plug('url')->getPath();
+        $uris = explode('/', $uri);
+        array_shift($uris);
+        for ($i=0, $j=count($uris); $i<$j; $i++) {
+            $request[$i] = urldecode($uris[$i]);
+        }
         $method = $this->getMethod();
         $request->setMethod($method);
         if ('GET'===$method) {
@@ -40,9 +45,6 @@ class http
             }
         }
         \PMVC\set($request,$inputs);
-        if (isset($request[REQUEST_METHOD])) {
-            $request->setMethod(strtoupper($request[REQUEST_METHOD]));
-        }
     }
 
     public function getMethod()

@@ -21,6 +21,7 @@ class HttpTest extends PHPUnit_Framework_TestCase
 
    /**
     * @runInSeparateProcess
+    * @preserveGlobalState disabled
     */
     function testGo()
     {
