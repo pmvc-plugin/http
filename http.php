@@ -12,6 +12,18 @@ class http
 {
     public function init()
     {
+        \PMVC\callPlugin(
+            'dispatcher',
+            'attach',
+            [
+                $this,
+                \PMVC\Event\MAP_REQUEST
+            ]
+        );
+    }
+
+    public function onMapRequest()
+    {
         $env = \PMVC\plug('getenv');
         $controller = \PMVC\plug('controller');
         if (empty($controller)) {
