@@ -99,12 +99,15 @@ class http
     /**
      * execute other php
      */
-    public function go($path)
+    public function go($path, $isClientLocation = false)
     {
-        $this->processHeader(["Location: $path"]);
         if (\PMVC\getOption(_VIEW_ENGINE)==='json') {
+            if (!$isClientLocation) {
+                $this->processHeader(["Location: $path"]);
+            }
             return;
         }
+        $this->processHeader(["Location: $path"]);
         echo '<meta http-equiv="refresh" content="0; url='.$path.'">';
         echo '<script>location.replace('.$path.')</script>';
     }
